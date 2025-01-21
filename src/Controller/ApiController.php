@@ -16,6 +16,7 @@ class ApiController extends AbstractController
     public function employees(Request $request, ApiHttpClient $apiHttpClient, PaginatorInterface $paginator): Response
     {
         $employees = $apiHttpClient->getEmployees();
+        $employeesCount = count($employees);
 
         $pagination = $paginator->paginate(
             $employees,
@@ -25,6 +26,7 @@ class ApiController extends AbstractController
 
         return $this->render('employee/index.html.twig', [
             'employees' => $pagination,
+            'employeesCount' => $employeesCount
         ]);
     }
 
