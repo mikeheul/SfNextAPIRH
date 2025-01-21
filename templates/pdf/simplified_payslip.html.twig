@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bulletin de Salaire Simplifié</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #4A90E2;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .details-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .details-table td:first-child {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bulletin de Salaire Simplifié</h1>
+            <p><strong>Mois :</strong> {{ "now" | date('F Y') }}</p>
+        </header>
+
+        <table class="details-table">
+            <tr>
+                <td>Nom de l'employé :</td>
+                <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Poste :</td>
+                <td>{{ employee.position }}</td>
+            </tr>
+            <tr>
+                <td>Salaire brut :</td>
+                <td>{{ payroll.grossSalary }} €</td>
+            </tr>
+            <tr>
+                <td>Retenues :</td>
+                <td>{{ payroll.deductions }} €</td>
+            </tr>
+            <tr>
+                <td>Salaire net :</td>
+                <td>{{ payroll.netSalary }} €</td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            Fait à [Ville], le {{ "now" | date('d/m/Y') }}<br>
+            <strong>[Nom de l'entreprise]</strong>
+        </div>
+    </div>
+</body>
+</html>

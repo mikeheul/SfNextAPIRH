@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contrat de travail</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #4A90E2;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #4A90E2;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .details-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .details-table td:first-child {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .signature-section {
+            margin-top: 30px;
+        }
+
+        .signature-box {
+            width: 45%;
+            border-top: 1px solid #000;
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 10px;
+            font-size: 12px;
+        }
+
+        .right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Contrat de Travail</h1>
+            <p><strong>Date :</strong> {{ "now" | date('d/m/Y') }}</p>
+        </header>
+
+        <!-- Informations générales -->
+        <div class="section">
+            <h2>Informations de l'Employé</h2>
+            <table class="details-table">
+                <tr>
+                    <td>Nom complet :</td>
+                    <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+                </tr>
+                <tr>
+                    <td>Adresse e-mail :</td>
+                    <td>{{ employee.email }}</td>
+                </tr>
+                <tr>
+                    <td>Poste :</td>
+                    <td>{{ employee.position }}</td>
+                </tr>
+                <tr>
+                    <td>Date de début :</td>
+                    <td>{{ employee.startDate | date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <td>Statut :</td>
+                    <td>{{ employee.status }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Détails du contrat -->
+        <div class="section">
+            <h2>Conditions du Contrat</h2>
+            <p>
+                Ce contrat de travail est établi entre l'employeur et {{ employee.firstName }} {{ employee.lastName }}.
+                L'employé accepte de remplir ses fonctions au poste de <strong>{{ employee.position }}</strong> à partir du {{ employee.startDate | date('d/m/Y') }}.
+            </p>
+            <p>
+                Le salaire mensuel brut de l'employé sera déterminé conformément à la politique de l'entreprise. Les détails
+                spécifiques seront communiqués séparément.
+            </p>
+            <p>
+                L'employé bénéficiera des avantages sociaux suivants :
+            </p>
+            <ul>
+                <li>Congés payés conformément à la législation en vigueur.</li>
+                <li>Assurance santé prise en charge partiellement par l'entreprise.</li>
+                <li>Possibilité de télétravail selon les conditions de l'entreprise.</li>
+            </ul>
+        </div>
+
+        <!-- Signatures -->
+        <div class="signature-section">
+            <div class="signature-box">
+                Signature de l'Employé<br>
+                {{ employee.firstName }} {{ employee.lastName }}
+            </div>
+            <div class="signature-box right">
+                Signature de l'Employeur<br>
+                [Nom de l'Entreprise]
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Document généré automatiquement. Toute modification non autorisée est interdite.
+    </div>
+</body>
+</html>
