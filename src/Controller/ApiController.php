@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\EmployeeType;
 use App\HttpClient\ApiHttpClient;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,11 +13,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ApiController extends AbstractController
 {
     #[Route('/employees', name: 'app_employees')]
-    public function employees(ApiHttpClient $apiHttpClient): Response
+    public function employees(Request $request, ApiHttpClient $apiHttpClient, PaginatorInterface $paginator): Response
     {
         $employees = $apiHttpClient->getEmployees();
+
+        $pagination = $paginator->paginate(
+            $employees,
+            $request->query->getInt('page', 1),
+            6 
+        );
+
         return $this->render('employee/index.html.twig', [
-            'employees' => $employees,
+            'employees' => $pagination,
         ]);
     }
 

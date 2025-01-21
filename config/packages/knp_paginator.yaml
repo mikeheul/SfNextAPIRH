@@ -1,0 +1,3 @@
+# knp_paginator:
+#     template:
+#         pagination: 'bundles/KnpPaginatorBundle/Pagination/tailwind_pagination.html.twig'
